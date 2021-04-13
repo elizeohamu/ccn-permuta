@@ -4,7 +4,7 @@
 Plugin Name: CCN Doação e Permuta
 Plugin URI: http://www.elizeohamu.com.br
 Description: Plugin CCN
-Version: 1.0.5
+Version: 1.0.0
 details_url: "https://github.com/elizeohamu/ccn-permuta",
 download_url: "https://github.com/elizeohamu/ccn-permuta/archive/refs/heads/master.zip"
 Author: Elízeo Hamu

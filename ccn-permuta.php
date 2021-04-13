@@ -4,7 +4,9 @@
 Plugin Name: CCN Doação e Permuta
 Plugin URI: http://www.elizeohamu.com.br
 Description: Plugin CCN
-Version: 1.0
+Version: 1.0.0
+details_url: "https://github.com/elizeohamu/ccn-permuta",
+download_url: "https://github.com/elizeohamu/ccn-permuta/archive/refs/heads/master.zip"
 Author: Elízeo Hamu
 Author URI: http://www.elizeohamu.com.br
 Text Domain: ccn-permuta
@@ -115,3 +117,15 @@ add_action('init', 'criando_post_type'); //Ativando a função
 add_shortcode("ccn-permuta", "flw_shortcode"); 
 add_action('save_post', 'save_meta_box_content');         
 add_action('add_meta_boxes', 'fazendoChamadaAddBox'); 
+
+
+require 'plugin-update-checker/plugin-update-checker.php';
+
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+    'https://github.com/elizeohamu/ccn-permuta/',
+    __FILE__,
+    'ccn-permuta'
+);
+
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');

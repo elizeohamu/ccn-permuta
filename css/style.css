@@ -1,0 +1,14 @@
+.exchange-card ul li{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.exchange-card ul li i{    
+    margin-top: 5px;       
+}
+
+.exchange-card ul li span{
+    flex: 1;
+    margin-left: 5px;       
+}

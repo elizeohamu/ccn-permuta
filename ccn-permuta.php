@@ -13,6 +13,12 @@ Text Domain: ccn-permuta
 Licence: GPLv2
 */
 
+add_action('wp_enqueue_scripts','register_styles');
+
+function register_styles(){
+    wp_enqueue_style( 'style', plugins_url( 'css/style.css' , __FILE__ ) );    
+}
+
 function criando_post_type() {
     $ccn_labels = array(
     'name' => 'Doação e Permuta',
@@ -65,16 +71,16 @@ function flw_shortcode() {
                 ?>
                 <ul>
                     <li>
-                        <i class="fas fa-phone"></i><span><?php echo get_post_meta( $post_id, 'metabox-content1', true ); ?></span>                       
+                        <i class="fas fa-map-marker-alt"></i><span><?php echo get_post_meta( $post_id, 'metabox-content1', true ); ?></span>                       
                     </li>
                     <li>
-                        <i class="fas fa-phone"></i><span><?php echo get_post_meta( $post_id, 'metabox-content2', true ); ?></span>                                
+                        <i class="fas fa-list"></i><span><?php echo get_post_meta( $post_id, 'metabox-content2', true ); ?></span>                                
                     </li>    
                     <li>
-                        <i class="fas fa-phone"></i><span><?php echo get_post_meta( $post_id, 'metabox-content3', true ); ?></span>                       
+                        <i class="fas fa-book"></i><span><?php echo get_post_meta( $post_id, 'metabox-content3', true ); ?></span>                       
                     </li>
                     <li>
-                        <i class="fas fa-phone"></i><span><?php echo get_post_meta( $post_id, 'metabox-content4', true ); ?></span>                                
+                    <i class="fas fa-hand-holding-usd"></i><?php echo get_post_meta( $post_id, 'metabox-content4', true ); ?></span>                                
                     </li>                           
                 </ul>
                 <a href="<?php the_permalink(); ?>">Ver mais</a>                                                                
@@ -98,20 +104,23 @@ function flw_shortcode() {
         
     function criandoFormulario($post) { 
 ?>
-            <label for="local-1">Instituição 1</label>
+            <label for="local-1">Nome da Instituição</label>
             <input type="text" name="local-1" value="<?php echo get_post_meta( $post->ID, 'metabox-content1', true ); ?>" />
             <br>
             <br>
-            <label for="local-2">Instituição 2</label>
+            <label for="local-2">Título do Periódico</label>
             <input type="text" name="local-2" value="<?php echo get_post_meta( $post->ID, 'metabox-content2', true ); ?>" />
             <br>
             <br>
-            <label for="local-3">Instituição 3</label>
+            <label for="local-3">Editora</label>
             <input type="text" name="local-3" value="<?php echo get_post_meta( $post->ID, 'metabox-content3', true ); ?>" />
             <br>
             <br>
-            <label for="local-4">Instituição 4</label>
-            <input type="text" name="local-4" value="<?php echo get_post_meta( $post->ID, 'metabox-content4', true ); ?>" />
+            <label for="local-4">Permuta/doação</label>            
+            <select name="local-4">
+                <option value="Permuta" selected>Permuta</option>
+                <option value="Doação">Doação</option>                
+            </select>
             <?php
     }
            
@@ -119,6 +128,7 @@ function flw_shortcode() {
  *  Save textbox content
  */
 function save_meta_box_content( $post_id ) {
+
     $textbox_content1 = $_POST['local-1'];
     $textbox_content2 = $_POST['local-2'];
     $textbox_content3 = $_POST['local-3'];

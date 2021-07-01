@@ -69,7 +69,13 @@ function flw_shortcode() {
                     </li>
                     <li>
                         <i class="fas fa-phone"></i><span><?php echo get_post_meta( $post_id, 'metabox-content2', true ); ?></span>                                
-                    </li>                               
+                    </li>    
+                    <li>
+                        <i class="fas fa-phone"></i><span><?php echo get_post_meta( $post_id, 'metabox-content3', true ); ?></span>                       
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i><span><?php echo get_post_meta( $post_id, 'metabox-content4', true ); ?></span>                                
+                    </li>                           
                 </ul>
                 <a href="<?php the_permalink(); ?>">Ver mais</a>                                                                
         </div>               
@@ -98,6 +104,14 @@ function flw_shortcode() {
             <br>
             <label for="local-2">Instituição 2</label>
             <input type="text" name="local-2" value="<?php echo get_post_meta( $post->ID, 'metabox-content2', true ); ?>" />
+            <br>
+            <br>
+            <label for="local-3">Instituição 3</label>
+            <input type="text" name="local-3" value="<?php echo get_post_meta( $post->ID, 'metabox-content3', true ); ?>" />
+            <br>
+            <br>
+            <label for="local-4">Instituição 4</label>
+            <input type="text" name="local-4" value="<?php echo get_post_meta( $post->ID, 'metabox-content4', true ); ?>" />
             <?php
     }
            
@@ -107,9 +121,13 @@ function flw_shortcode() {
 function save_meta_box_content( $post_id ) {
     $textbox_content1 = $_POST['local-1'];
     $textbox_content2 = $_POST['local-2'];
+    $textbox_content3 = $_POST['local-3'];
+    $textbox_content4 = $_POST['local-4'];
     
     update_post_meta( $post_id, 'metabox-content1', $textbox_content1 );
-    update_post_meta( $post_id, 'metabox-content2', $textbox_content2 );          
+    update_post_meta( $post_id, 'metabox-content2', $textbox_content2 );  
+    update_post_meta( $post_id, 'metabox-content3', $textbox_content3 ); 
+    update_post_meta( $post_id, 'metabox-content4', $textbox_content4 );         
     
 }    
  
@@ -117,15 +135,3 @@ add_action('init', 'criando_post_type'); //Ativando a função
 add_shortcode("ccn-permuta", "flw_shortcode"); 
 add_action('save_post', 'save_meta_box_content');         
 add_action('add_meta_boxes', 'fazendoChamadaAddBox'); 
-
-
-require 'plugin-update-checker/plugin-update-checker.php';
-
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-    'https://github.com/elizeohamu/ccn-permuta/',
-    __FILE__,
-    'ccn-permuta'
-);
-
-//Set the branch that contains the stable release.
-$myUpdateChecker->setBranch('master');

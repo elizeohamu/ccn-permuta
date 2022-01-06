@@ -80,7 +80,7 @@ function flw_shortcode() {
                         <i class="fas fa-book"></i><span><?php echo get_post_meta( $post_id, 'metabox-content3', true ); ?></span>                       
                     </li>
                     <li>
-                    <i class="fas fa-hand-holding-usd"></i><?php echo get_post_meta( $post_id, 'metabox-content4', true ); ?></span>                                
+                    <i class="fas fa-hand-holding"></i><?php echo get_post_meta( $post_id, 'metabox-content4', true ); ?></span>                                
                     </li>                           
                 </ul>
                 <a href="<?php the_permalink(); ?>">Ver mais</a>                                                                
